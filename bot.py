@@ -7,7 +7,11 @@ TELEGRAM_URL = "https://api.telegram.org/bot{}/sendMessage"
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
-
+if TOKEN and CHAT_ID:
+    requests.post(
+        TELEGRAM_URL.format(TOKEN),
+        data={"chat_id": CHAT_ID, "text": "✅ ETH/USDT 1M BOT CONNECTED"}
+    )
 
 def ema(values, period):
     if len(values) < period:
